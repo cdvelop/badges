@@ -5,15 +5,30 @@ import (
 	"strings"
 )
 
-// GenerateSVG runs parsing and generation and returns svg, count, warnings, error
-// Example output (for two badges `License:MIT:blue` and `Go:1.22:blue`):
+// GenerateSVG creates an SVG image from the configured badges.
+//
+// It returns the SVG content as a byte slice, the number of badges included,
+// and an error if the generation fails. This method is typically called
+// by BuildBadges, but it can be used directly if you only need the SVG data.
+//
+// Example of a generated SVG for two badges ("License:MIT:blue" and "Go:1.22:blue"):
 //
 // <?xml version="1.0" encoding="UTF-8"?>
-// <svg xmlns="http://www.w3.org/2000/svg">
-// <!-- Badge: License -->
-// <text>License: MIT</text>
-// <!-- Badge: Go -->
-// <text>Go: 1.22</text>
+// <svg xmlns="http://www.w3.org/2000/svg" width="168" height="20" viewBox="0 0 168 20">
+//   <!-- Badge: License -->
+//   <g transform="translate(0, 0)">
+//     <rect x="0" y="0" width="58" height="20" fill="#6c757d"/>
+//     <rect x="58" y="0" width="46" height="20" fill="blue"/>
+//     <text x="29" y="14" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">License</text>
+//     <text x="81" y="14" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">MIT</text>
+//   </g>
+//   <!-- Badge: Go -->
+//   <g transform="translate(109, 0)">
+//     <rect x="0" y="0" width="34" height="20" fill="#6c757d"/>
+//     <rect x="34" y="0" width="25" height="20" fill="blue"/>
+//     <text x="17" y="14" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">Go</text>
+//     <text x="46" y="14" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">1.22</text>
+//   </g>
 // </svg>
 func (h *BadgesHandler) GenerateSVG() ([]byte, int, error) {
 	svg, count, _, err := h.generateSVGFromParams(h.args)
