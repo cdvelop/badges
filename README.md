@@ -4,3 +4,31 @@
 <!-- END_SECTION:BADGES_SECTION -->
 
 go package for generate badges in repositories
+
+## Usage
+
+Install the command:
+```sh
+go install github.com/cdvelop/badges/cmd/badges@latest
+```
+
+Then, you can use it in your project's root directory:
+```sh
+badges
+```
+
+This will generate a `docs/img/badges.svg` file and update your `README.md` with the badges.
+
+You can also customize the behavior with flags:
+```sh
+badges -test-status="Failing" -coverage=50
+```
+
+### Available flags
+- `-module-name`: Module name (default: "testmodule")
+- `-test-status`: Test status (default: "Passing")
+- `-coverage`: Coverage percentage (default: "85")
+- `-race-status`: Race status (default: "Clean")
+- `-vet-status`: Vet status (default: "OK")
+- `-license`: License type (default: "MIT")
+- `-readme`: Readme file (default: "README.md")
