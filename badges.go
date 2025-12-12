@@ -191,9 +191,8 @@ func (h *BadgesHandler) BuildBadges() ([]string, error) {
 		}
 		// Print success message as in badges.bkp.sh
 		println("Badges saved to " + h.outputFile)
-	} else {
-		// println("SVG content is already up to date")
 	}
+	// Silent when content unchanged - no need to log
 
 	// Build the section args expected by SectionUpdate
 	sectionContent := h.BadgeMarkdown()
