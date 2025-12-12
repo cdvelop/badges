@@ -46,11 +46,12 @@ type BadgesHandler struct {
 // definition ("label:value:color") or a special command.
 //
 // Example:
-//   handler := NewBadgeHandler(
-//     "Go:1.18:#007d9c",
-//     "Tests:Passing:#4c1",
-//     "output_svgfile:docs/badges.svg",
-//   )
+//
+//	handler := NewBadgeHandler(
+//	  "Go:1.18:#007d9c",
+//	  "Tests:Passing:#4c1",
+//	  "output_svgfile:docs/badges.svg",
+//	)
 func NewBadgeHandler(args ...string) *BadgesHandler {
 	// Create handler with defaults
 	h := &BadgesHandler{
@@ -191,7 +192,7 @@ func (h *BadgesHandler) BuildBadges() ([]string, error) {
 		// Print success message as in badges.bkp.sh
 		println("Badges saved to " + h.outputFile)
 	} else {
-		println("SVG content is already up to date")
+		// println("SVG content is already up to date")
 	}
 
 	// Build the section args expected by SectionUpdate
@@ -222,7 +223,8 @@ func (h *BadgesHandler) ReadmeFile() string {
 // with most markdown renderers.
 //
 // Example output:
-//   <a href="docs/img/badges.svg"><img src="docs/img/badges.svg" alt="Project Badges" title="..."></a>
+//
+//	<a href="docs/img/badges.svg"><img src="docs/img/badges.svg" alt="Project Badges" title="..."></a>
 func (h *BadgesHandler) BadgeMarkdown() string {
 	if h.err != nil {
 		return ""
