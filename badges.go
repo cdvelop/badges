@@ -190,7 +190,8 @@ func (h *BadgesHandler) BuildBadges() ([]string, error) {
 			return nil, fmt.Errorf("write svg file: %w", err)
 		}
 		// Print success message as in badges.bkp.sh
-		println("Badges saved to " + h.outputFile)
+		// println("Badges saved to " + h.outputFile)
+		// Note: Commented out to allow caller (e.g., gotest) to control output
 	}
 	// Silent when content unchanged - no need to log
 
